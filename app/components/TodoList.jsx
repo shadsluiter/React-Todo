@@ -5,9 +5,9 @@ var TodoList = React.createClass( {
   render: function() {
     var {todos} = this.props;
     var renderTodos = () => {
-      return todos.map((todo) => {
+      return todos.map((todoItem) => {
         return (
-          <Todo key={todo.id} {...todo}/>
+          <Todo key={todoItem.id} {...todoItem}/>
         )
       });
     };
@@ -18,7 +18,6 @@ var TodoList = React.createClass( {
       </div>
     )
   }
-
 });
 
 module.exports = TodoList;
