@@ -13,7 +13,7 @@ export var searchTextReducer = (state = '', action) => {
 
 //showcompletedreducer, default false, TOGGLE_SHOW_COMPLETED
 
-export var showCompletedReducer = (state = faslse, action) => {
+export var showCompletedReducer = (state = false, action) => {
   switch (action.type) {
     case 'TOGGLE_SHOW_COMPLETED':
       return !state;
