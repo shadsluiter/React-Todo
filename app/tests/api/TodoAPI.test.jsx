@@ -52,8 +52,55 @@ describe('TodoAPI', () => {
     var actualTodos = TodoAPI.getTodos();
     expect(actualTodos).toEqual(todos);
     });
+  });
+
+  describe('filterTodos', function() {
+    var todos = [ {
+      id: 1,
+      text: 'something to do',
+      completed: true
+    },
+    {
+      id: 2,
+      text: 'walk the dog',
+      completed: false
+    },
+    {
+      id: 3,
+      text: 'feed the cat',
+      completed: true
+    }
+  ];
+
+  it('should return all items if showCompleted is true', function() {
+    var filterTodos = TodoAPI.filterTodos(todos, true, '');
+    expect(filterTodos.length).toBe(3);
+  });
+
+  it('should return only unfinished items if showCompleted is false', function() {
+    var filterTodos = TodoAPI.filterTodos(todos, false, '');
+    expect(filterTodos.length).toBe(1);
+  });
+
+  it('should only return items that contain search text keyword and showCompleted is true', function() {
+    var filterTodos = TodoAPI.filterTodos(todos, true, 'dog');
+    expect(filterTodos.length).toBe(1);
+  });
 
 
+  it('should sort the items with completed items last in the list', function() {
+    var filterTodos = TodoAPI.filterTodos(todos, false, '');
+    expect(filterTodos[0].completed).toBe(false);
+  });
 
+  it('should return all todos with empty search text', function() {
+    var filterTodos = TodoAPI.filterTodos(todos, true, '');
+    expect(filterTodos.length).toBe(todos.length);
+  });
+
+  it('should return only todos that match search text', function() {
+    var filterTodos = TodoAPI.filterTodos(todos, false, 'dog');
+    expect(filterTodos.length).toBe(1);
+  });
   });
 });
