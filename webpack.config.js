@@ -2,9 +2,11 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-  entry: ['script!jquery/dist/jquery.min.js',
-          'script!foundation-sites/dist/js/foundation.min.js',
-          './app/app.jsx'],
+  entry: [
+    'script!jquery/dist/jquery.min.js',
+    'script!foundation-sites/dist/foundation.min.js',
+    './app/app.jsx'
+  ],
   externals: {
     jquery: 'jQuery'
   },
@@ -30,7 +32,7 @@ module.exports = {
       actions: 'app/actions/actions.jsx',
       reducers: 'app/reducers/reducers.jsx',
       configureStore: 'app/store/configureStore.jsx'
-        },
+    },
     extensions: ['', '.js', '.jsx']
   },
   module: {
@@ -47,8 +49,8 @@ module.exports = {
   },
   sassLoader: {
     includePaths: [
-      path.resolve(__dirname,'./node_modules/foundation-sites/scss')
+      path.resolve(__dirname, './node_modules/foundation-sites/scss')
     ]
   },
-  devtool: 'inline-source-map'
+  devtool: 'cheap-module-eval-source-map'
 };
