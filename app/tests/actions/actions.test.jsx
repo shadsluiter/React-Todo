@@ -32,9 +32,9 @@ describe('Actions', () => {
   });
 
   it('should generate add todos action object', () => {
-    var todos = [ {
-      id: 111,
-      text: 'somthing to do text',
+    var todos = [{
+      id: '111',
+      text: 'anything',
       completed: false,
       completedAt: undefined,
       createdAt: 33000
